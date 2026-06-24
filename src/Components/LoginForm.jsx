@@ -8,7 +8,7 @@ import {
     FaEyeSlash,
 } from "react-icons/fa";
 
-import "../styles/login.css";
+import "../Styles/login.css";
 
 function LoginForm() {
     const [showPassword, setShowPassword] =

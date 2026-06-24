@@ -7,7 +7,7 @@ import {
     FaEyeSlash,
 } from "react-icons/fa";
 
-import "../styles/signup.css";
+import "../Styles/signup.css";
 
 function SignupForm() {
 
