@@ -79,7 +79,6 @@ function LoginForm() {
                 <form onSubmit={handleSubmit}>
 
                     <label>Email</label>
-
                     <input
                         type="email"
                         name="email"
@@ -88,11 +87,11 @@ function LoginForm() {
                         onChange={handleChange}
                     />
 
-                    {errors.email && (
+                    <p> {errors.email && (
                         <span className="error">
                             {errors.email}
                         </span>
-                    )}
+                    )}</p>
 
                     <label>Password</label>
 
