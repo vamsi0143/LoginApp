@@ -38,22 +38,36 @@ function SignupForm() {
 
         let newErrors = {};
 
-        if (!formData.fullName)
+        if (!formData.fullName) {
             newErrors.fullName =
                 "Full Name Required";
-
-        if (!formData.email)
+        }
+        if (!formData.email) {
             newErrors.email =
                 "Email Required";
-
-        if (!formData.phone)
+        }
+        if (!formData.dob) {
+            newErrors.dob =
+                "Date of Birth Required"
+        }
+        if (!formData.phone) {
             newErrors.phone =
                 "Phone Required";
-
-        if (!formData.password)
+        }
+        if (!formData.password) {
             newErrors.password =
                 "Password Required";
+        }
 
+        else if (formData.password.length < 8) {
+            newErrors.password = "Password must be at least 8 characters long";
+        }
+        else if (!/\d/.test(formData.password)) {
+            newErrors.password = "Password must contain at least 1 number";
+        }
+        if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
+            newErrors.password = "Password must contain at least 1 special character";
+        }
         setErrors(newErrors);
 
         return (
@@ -100,6 +114,7 @@ function SignupForm() {
                         placeholder="vamsi krishna"
                         onChange={handleChange}
                     />
+                    <p style={{ color: "red" }}>{errors.fullName}</p>
 
                     <label>Email</label>
 
@@ -109,6 +124,8 @@ function SignupForm() {
                         placeholder="abc123@gmail.com"
                         onChange={handleChange}
                     />
+                    <p style={{ color: "red" }}>{errors.email}</p>
+
 
                     <label>
                         Birth of Date
@@ -119,6 +136,7 @@ function SignupForm() {
                         name="dob"
                         onChange={handleChange}
                     />
+                    <p style={{ color: "red" }}>{errors.dob}</p>
 
                     <label>
                         Phone Number
@@ -130,10 +148,12 @@ function SignupForm() {
                         placeholder="4547260592"
                         onChange={handleChange}
                     />
+                    <p style={{ color: "red" }}>{errors.phone}</p>
 
                     <label>
                         Set Password
                     </label>
+
 
                     <div className="password-wrapper">
 
@@ -147,6 +167,7 @@ function SignupForm() {
                             placeholder="********"
                             onChange={handleChange}
                         />
+                        <p style={{ color: "red" }}>{errors.password}</p>
 
                         <span
                             onClick={() =>

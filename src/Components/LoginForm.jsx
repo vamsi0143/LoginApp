@@ -39,6 +39,15 @@ function LoginForm() {
             newErrors.password =
                 "Password required";
         }
+        else if (formData.password.length < 8) {
+            newErrors.password = "Password must be at least 8 characters long";
+        }
+        else if (!/\d/.test(formData.password)) {
+            newErrors.password = "Password must contain at least 1 number";
+        }
+        if (!/[!@#$%^&*(),.?":{}|<>]/.test(formData.password)) {
+            newErrors.password = "Password must contain at least 1 special character";
+        }
 
         setErrors(newErrors);
 
@@ -125,8 +134,8 @@ function LoginForm() {
 
                     <div className="options">
 
-                        <label>
-                            <input type="checkbox" />
+                        <label className="checklabel">
+                            <input className="check-box" type="checkbox" />
                             Remember me
                         </label>
 
